@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>All Bookings</h1>
@@ -23,5 +24,8 @@
         </tr>
         {% endfor %}
     </table>
+    <br>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
 </html>

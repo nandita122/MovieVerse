@@ -1,66 +1,75 @@
 /* General styles */
+
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #141414; /* Netflix dark background */
-    margin: 40px;
-    color: #ffffff; /* White text */
+    background-color: #0a0002;
+    background-image: url("Bgm.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ccc5c6;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Heading */
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #e50914; /* Netflix red */
+    color: #979091;
 }
 
 /* Navigation links */
 nav {
-    text-align: center;
-    margin-bottom: 20px;
+    background-color: #363031;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 }
 
-nav a {
+.nav-links a {
+    display: inline-block;
+    padding: 14px 20px;
+    color: #ccc5c6;
     text-decoration: none;
-    color: #fdfdff; /* Blue links */
-    font-weight: 600;
-    margin: 0 15px;
-    transition: color 0.3s ease;
+    text-align: center;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
 }
 
-nav a:hover {
-    color: #e50914; /* Netflix red on hover */
+.nav-links a:hover {
+    background-color: #645e5f;
+    border-radius: 4px;
 }
-
-.links {
-    width: 80%;          /* or some fixed width like 600px */
-    margin: 0 auto;      /* this centers the block horizontally */
-    text-align: center;  /* center the inline links inside */
-}
-
 
 /* Table styles */
 table {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     border-collapse: collapse;
-    background-color: #222; /* Dark table background */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    
+    background-color: #363031;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 12px 20px;
-    border: 1px solid #333; /* Darker border */
+    padding: 14px 22px;
+    border: 1px solid #645e5f;
     text-align: center;
+    font-size: 1em;
+    color: #ccc5c6;
 }
 
 th {
-    background-color: #e50914; /* Netflix red */
-    font-weight: bold;
+    background-color: #979091;
+    color: #0a0002;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 tbody tr:hover {
-    background-color: #333; /* Slightly lighter row on hover */
+    background-color: #645e5f;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }

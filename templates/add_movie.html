@@ -2,8 +2,23 @@
 <html>
 <head>
     <title>Add Movie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <h1>Movie Listings</h1>
+    <br>
+
+    <div class="links">
+        <a href="{{ url_for('index') }}">Home</a> |
+        <a href="{{ url_for('add_movie') }}">Add Movie</a> |
+        <a href="{{ url_for('add_theater') }}">Add Theater</a> |
+        <a href="{{ url_for('add_show') }}">Add Show</a> |
+        <a href="{{ url_for('view_shows') }}">View Shows</a> |
+        <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+    </div>
+
+    <br>
+
     <h1>Add New Movie</h1>
     <form method="POST">
         <label for="title">Title:</label><br>
@@ -20,6 +35,7 @@
 
         <input type="submit" value="Add Movie">
     </form>
+    <br>
     <br>
     <a href="{{ url_for('home') }}">Back to Home</a>
 </body>

@@ -1,8 +1,38 @@
-<h2>Available Shows</h2>
-<ul>
-    {% for show in shows %}
-        <li>{{ show.title }} at {{ show.theater_name }} - {{ show.show_time }}</li>
-    {% else %}
-        <li>No shows available.</li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"></head>
+</head>
+<body>
+    
+</body>
+</html><h2>Available Shows</h2>
+{% if shows %}
+    <table border="1" cellspacing="0" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Theater</th>
+                <th>Show Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for show in shows %}
+                <tr>
+                    <td>{{ show.title }}</td>
+                    <td>{{ show.theater_name }}</td>
+                    <td>{{ show.show_time }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No shows available.</p>
+{% endif %}
+<br>
+<br>
+
+<a href="{{ url_for('home') }}">Back to Home</a>

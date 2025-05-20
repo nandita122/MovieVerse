@@ -3,8 +3,22 @@ from db_config import get_connection
 
 app = Flask(__name__)
 
-# ------------------ HOME ------------------
+# ------------------ INDEX ------------------
+
+
 @app.route('/')
+def index():
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM movies")
+    movies = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('index.html', movies=movies)
+
+
+# ------------------ HOME ------------------
+@app.route('/home')
 def home():
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add Theater</title></head>
+<head><title>Add Theater</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
-    <h1>Add Theater</h1>
-    <form method="POST">
-        <label for="name">Theater Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
+    <div class="center-container">
+        <h1>Add Theater</h1>
+        <form method="POST">
+            <label for="name">Theater Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
 
-        <label for="location">Location:</label><br>
-        <input type="text" id="location" name="location"><br>
+            <label for="location">Location:</label><br>
+            <input type="text" id="location" name="location"><br>
 
-        <button type="submit">Add Theater</button>
-    </form>
+            <button type="submit">Add Theater</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
-</html>

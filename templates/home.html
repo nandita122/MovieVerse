@@ -11,6 +11,7 @@
     
 
     <div class="links">
+        <a href="{{ url_for('index') }}">Home</a> |
         <a href="{{ url_for('add_movie') }}">Add Movie</a> |
         <a href="{{ url_for('add_theater') }}">Add Theater</a> |
         <a href="{{ url_for('add_show') }}">Add Show</a> |
@@ -43,5 +44,8 @@
     {% else %}
         <p style="text-align: center;">No movies available.</p>
     {% endif %}
+    <br>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
 </html>

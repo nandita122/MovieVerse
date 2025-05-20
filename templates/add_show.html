@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add Show</title></head>
+<head><title>Add Show</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"></head>
 <body>
-    <h1>Add Show</h1>
-    <form method="POST">
-        <label for="movie_id">Movie:</label><br>
-        <select name="movie_id" id="movie_id" required>
-            {% for movie in movies %}
-                <option value="{{ movie.movie_id }}">{{ movie.title }}</option>
-            {% endfor %}
-        </select><br>
 
-        <label for="theater_id">Theater:</label><br>
-        <select name="theater_id" id="theater_id" required>
-            {% for theater in theaters %}
-                <option value="{{ theater.theater_id }}">{{ theater.name }}</option>
-            {% endfor %}
-        </select><br>
+    <div class="center-container">
+        <h1>Add Show</h1>
+        <div class="links">
+        <a href="{{ url_for('index') }}">Home</a> |
+        <a href="{{ url_for('add_movie') }}">Add Movie</a> |
+        <a href="{{ url_for('add_theater') }}">Add Theater</a> |
+        <a href="{{ url_for('add_show') }}">Add Show</a> |
+        <a href="{{ url_for('view_shows') }}">View Shows</a> |
+        <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+    </div><br>
+    <br>
+        <form method="POST">
+            <label for="movie_id">Movie:</label><br>
+            <select name="movie_id" id="movie_id" required>
+                {% for movie in movies %}
+                    <option value="{{ movie.movie_id }}">{{ movie.title }}</option>
+                {% endfor %}
+            </select><br>
+            <br>
+            <label for="theater_id">Theater:</label><br>
+            <select name="theater_id" id="theater_id" required>
+                {% for theater in theaters %}
+                    <option value="{{ theater.theater_id }}">{{ theater.name }}</option>
+                {% endfor %}
+            </select><br>
+            <br>
+            <label for="show_time">Show Time (YYYY-MM-DD HH:MM:SS):</label><br>
+            <input type="text" id="show_time" name="show_time" placeholder="2025-05-19 19:30:00" required><br>
+            <br>
 
-        <label for="show_time">Show Time (YYYY-MM-DD HH:MM:SS):</label><br>
-        <input type="text" id="show_time" name="show_time" placeholder="2025-05-19 19:30:00" required><br>
-
-        <button type="submit">Add Show</button>
-    </form>
+            <button type="submit">Add Show</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    
+    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
-</html>
