@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+</head>
+<body>
+    <h1>Add New Movie</h1>
+    <form method="POST">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="genre">Genre:</label><br>
+        <input type="text" id="genre" name="genre"><br><br>
+
+        <label for="duration">Duration (minutes):</label><br>
+        <input type="number" id="duration" name="duration"><br><br>
+
+        <label for="rating">Rating (e.g. PG, 4.5/5):</label><br>
+        <input type="text" id="rating" name="rating"><br><br>
+
+        <input type="submit" value="Add Movie">
+    </form>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

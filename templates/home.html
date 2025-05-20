@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Movie Listings</h1>
+    <br>
+    <br>
+    
+
+    <div class="links">
+        <a href="{{ url_for('add_movie') }}">Add Movie</a> |
+        <a href="{{ url_for('add_theater') }}">Add Theater</a> |
+        <a href="{{ url_for('add_show') }}">Add Show</a> |
+        <a href="{{ url_for('view_shows') }}">View Shows</a> |
+        <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    {% if movies %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Duration (min)</th>
+            <th>Rating</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.genre }}</td>
+            <td>{{ movie.duration }}</td>
+            <td>{{ movie.rating }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p style="text-align: center;">No movies available.</p>
+    {% endif %}
+</body>
+</html>

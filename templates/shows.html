@@ -1,0 +1,8 @@
+<h2>Available Shows</h2>
+<ul>
+    {% for show in shows %}
+        <li>{{ show.title }} at {{ show.theater_name }} - {{ show.show_time }}</li>
+    {% else %}
+        <li>No shows available.</li>
+    {% endfor %}
+</ul>
