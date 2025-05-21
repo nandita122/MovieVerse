@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MovieVerse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1976d2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>About MovieVerse</h1>
+    <p>
+        Welcome to <span class="highlight">MovieVerse</span> – your one-stop destination for discovering and booking the latest and greatest movies playing in theaters near you!
+    </p>
+    <p>
+        At MovieVerse, we are passionate about creating a seamless movie-watching experience. Whether you're looking for showtimes, theater details, or planning a night out with friends, MovieVerse makes it easy, fast, and fun.
+    </p>
+    <p>
+        Our platform brings together movie lovers and theaters to ensure you never miss a blockbuster. With real-time updates, intuitive design, and user-friendly navigation, MovieVerse is here to revolutionize the way you watch movies.
+    </p>
+    <p>
+        Join us on this cinematic journey and explore the universe of films at your fingertips!
+    </p>
+
+    <a href="{{ url_for('select_role') }}">← Back to Login</a>
+</div>
+
+</body>
+</html>

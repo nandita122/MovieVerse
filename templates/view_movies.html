@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MovieVerse</title>
+    <title>View Movies | MovieVerse</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <style>
         body {
@@ -37,6 +37,7 @@
 
         nav a:hover {
             background-color: #0b0101;
+            color: white;
         }
 
         main {
@@ -48,23 +49,31 @@
             margin-bottom: 20px;
         }
 
-        .button-container {
-            margin-top: 30px;
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #f8f8f8;
         }
 
-        .button-container a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 24px;
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+
+        th {
             background-color: #af0d0d;
-            color: rgb(255, 252, 252);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            color: white;
         }
 
-        .button-container a:hover {
-            background-color: #0a0a0a;
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .no-movies {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #555;
         }
 
         footer {
@@ -79,33 +88,43 @@
 
     <!-- Header -->
     <header>
-        <h1>Welcome to MovieVerse</h1>
-        <p>Browse, Add Movies, and Manage Shows with Ease</p>
+        <h1>MovieVerse</h1>
+        <p>Explore Our Movie Collection</p>
     </header>
 
     <!-- Navigation Bar -->
     <nav>
-    <div class="nav-links">
-        <a href="{{ url_for('home') }}">View Movies</a>
-        <a href="{{ url_for('add_movie') }}">Add Movie</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about_us') }}">About Us</a>
+        <a href="{{ url_for('view_movies') }}">View Movies</a>
         <a href="{{ url_for('view_shows') }}">View Shows</a>
-        <a href="{{ url_for('add_show') }}">Add Shows</a>
         <a href="{{ url_for('view_bookings') }}">View Bookings</a>
-    </div>
     </nav>
-
 
     <!-- Main Content -->
     <main>
-        <h2>Your Gateway to Entertainment</h2>
-        <p>Use the navigation bar or the quick access buttons below to get started.</p>
-        <div class="button-container">
-            <a href="{{ url_for('home') }}">View Movies</a>
-            <a href="{{ url_for('add_movie') }}">Add Movie</a>
-            <a href="{{ url_for('view_shows') }}">View Shows</a>
-            <a href="{{ url_for('add_show') }}">Add Shows</a>
-            <a href="{{ url_for('view_bookings') }}">View Bookings</a>
-        </div>
+        <h2>Movie Listings</h2>
+
+        {% if movies %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Duration (min)</th>
+                <th>Rating</th>
+            </tr>
+            {% for movie in movies %}
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.duration }}</td>
+                <td>{{ movie.rating }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p class="no-movies">No movies found.</p>
+        {% endif %}
     </main>
 
     <!-- Footer -->

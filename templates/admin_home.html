@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieVerse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #c33232;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            padding: 14px 20px;
+            color: rgb(20, 19, 19);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #0b0101;
+        }
+
+        main {
+            padding: 40px;
+            text-align: center;
+        }
+
+        main h2 {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background-color: #af0d0d;
+            color: rgb(255, 252, 252);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #0a0a0a;
+        }
+
+        footer {
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to MovieVerse's Admin Page</h1>
+        <p>Browse, Add Movies, and Manage Shows with Ease</p>
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+        <h2>Your Gateway to Entertainment</h2>
+        <p>Use the navigation bar or the quick access buttons below to get started.</p>
+        <div class="button-container">
+            <a href="{{ url_for('add_movie') }}">Add Movie</a>
+    <a href="{{ url_for('add_theater') }}">Add Theater</a>
+    <a href="{{ url_for('add_show') }}">Add Show</a>
+    <a href="{{ url_for('view_movies') }}">View Movies</a>
+    <a href="{{ url_for('view_shows') }}">View Shows</a>
+    <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+    <a href="{{ url_for('index') }}">Back to Login</a>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 MovieVerse | All Rights Reserved
+    </footer>
+
+</body>
+

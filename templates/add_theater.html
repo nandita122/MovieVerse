@@ -1,22 +1,104 @@
 <!DOCTYPE html>
-<html>
-<head><title>Add Theater</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Theater | MovieVerse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #af0d0d;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #af0d0d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0a0a0a;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #af0d0d;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div class="center-container">
+
+    <div class="form-container">
+                <div class="links">
+            <a href="{{ url_for('home') }}">Home</a> |
+            <a href="{{ url_for('add_movie') }}">Add Movie</a> |
+            <a href="{{ url_for('add_theater') }}">Add Theater</a> |
+            <a href="{{ url_for('add_show') }}">Add Show</a> |
+            <a href="{{ url_for('view_shows') }}">View Shows</a> |
+            <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+        </div>
         <h1>Add Theater</h1>
         <form method="POST">
-            <label for="name">Theater Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
+            <label for="name">Theater Name:</label>
+            <input type="text" id="name" name="name" required>
 
-            <label for="location">Location:</label><br>
-            <input type="text" id="location" name="location"><br>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
 
             <button type="submit">Add Theater</button>
         </form>
+
+        <div class="back-link">
+            <a href="{{ url_for('select_role') }}">Back to Login</a>
+        </div>
     </div>
-    <br>
-    <br>
-    <a href="{{ url_for('home') }}">Back to Home</a>
+
 </body>
+</html>
