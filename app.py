@@ -32,13 +32,26 @@ def home():
 # ------------------ VIEW MOVIES ------------------
 @app.route('/view_movies')
 def view_movies():
+    genre_filter = request.args.get('genre')  # get selected genre from URL
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM movies")
+
+    # Get list of all unique genres for the dropdown
+    cursor.execute("SELECT DISTINCT genre FROM movies")
+    genres = cursor.fetchall()
+
+    # Fetch movies based on genre filter
+    if genre_filter:
+        cursor.execute("SELECT * FROM movies WHERE genre = %s", (genre_filter,))
+    else:
+        cursor.execute("SELECT * FROM movies")
+    
     movies = cursor.fetchall()
     cursor.close()
     conn.close()
-    return render_template('view_movies.html', movies=movies)
+
+    return render_template('view_movies.html', movies=movies, genres=genres, selected_genre=genre_filter)
+
 
 # ------------------ ADD MOVIE ------------------
 @app.route('/add_movie', methods=['GET', 'POST'])
@@ -108,22 +121,40 @@ def add_show():
     conn.close()
     return render_template('add_show.html', movies=movies, theaters=theaters)
 
-# ------------------ VIEW SHOWS ------------------
 @app.route('/shows')
 def view_shows():
+    selected_genre = request.args.get('genre')  # Get genre from query string
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
-    query = """
-        SELECT s.show_id, m.title, t.name AS theater_name, s.show_time
-        FROM shows s
-        JOIN movies m ON s.movie_id = m.movie_id
-        JOIN theaters t ON s.theater_id = t.theater_id
-    """
-    cursor.execute(query)
+
+    if selected_genre:
+        query = """
+            SELECT s.show_id, m.title, m.genre, t.name AS theater_name, s.show_time
+            FROM shows s
+            JOIN movies m ON s.movie_id = m.movie_id
+            JOIN theaters t ON s.theater_id = t.theater_id
+            WHERE m.genre = %s
+        """
+        cursor.execute(query, (selected_genre,))
+    else:
+        query = """
+            SELECT s.show_id, m.title, m.genre, t.name AS theater_name, s.show_time
+            FROM shows s
+            JOIN movies m ON s.movie_id = m.movie_id
+            JOIN theaters t ON s.theater_id = t.theater_id
+        """
+        cursor.execute(query)
+
     shows = cursor.fetchall()
+
+    # Get all distinct genres to populate filter dropdown
+    cursor.execute("SELECT DISTINCT genre FROM movies")
+    genres = cursor.fetchall()
+
     cursor.close()
     conn.close()
-    return render_template('shows.html', shows=shows)
+
+    return render_template('shows.html', shows=shows, genres=genres, selected_genre=selected_genre)
 
 
 

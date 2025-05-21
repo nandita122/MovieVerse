@@ -49,6 +49,15 @@
             margin-bottom: 20px;
         }
 
+        form {
+            margin-bottom: 30px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
         table {
             margin: 0 auto;
             border-collapse: collapse;
@@ -104,6 +113,19 @@
     <!-- Main Content -->
     <main>
         <h2>Movie Listings</h2>
+
+        <!-- Genre Filter -->
+        <form method="GET" action="{{ url_for('view_movies') }}">
+            <label for="genre">Filter by Genre:</label>
+            <select name="genre" id="genre" onchange="this.form.submit()">
+                <option value="">-- All Genres --</option>
+                {% for genre in genres %}
+                    <option value="{{ genre.genre }}" {% if genre.genre == selected_genre %}selected{% endif %}>
+                        {{ genre.genre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
 
         {% if movies %}
         <table>
