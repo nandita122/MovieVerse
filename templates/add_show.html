@@ -1,44 +1,100 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add Show</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"></head>
+<head>
+    <title>Add Show</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label, select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .links {
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
 
     <div class="center-container">
         <h1>Add Show</h1>
+
         <div class="links">
-        <a href="{{ url_for('index') }}">Home</a> |
-        <a href="{{ url_for('add_movie') }}">Add Movie</a> |
-        <a href="{{ url_for('add_theater') }}">Add Theater</a> |
-        <a href="{{ url_for('add_show') }}">Add Show</a> |
-        <a href="{{ url_for('view_shows') }}">View Shows</a> |
-        <a href="{{ url_for('view_bookings') }}">View Bookings</a>
-    </div><br>
-    <br>
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('add_movie') }}">Add Movie</a> |
+            <a href="{{ url_for('add_theater') }}">Add Theater</a> |
+            <a href="{{ url_for('add_show') }}">Add Show</a> |
+            <a href="{{ url_for('view_shows') }}">View Shows</a> |
+            <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+        </div>
+
         <form method="POST">
-            <label for="movie_id">Movie:</label><br>
+            <label for="movie_id">Movie:</label>
             <select name="movie_id" id="movie_id" required>
                 {% for movie in movies %}
                     <option value="{{ movie.movie_id }}">{{ movie.title }}</option>
                 {% endfor %}
-            </select><br>
-            <br>
-            <label for="theater_id">Theater:</label><br>
+            </select>
+
+            <label for="theater_id">Theater:</label>
             <select name="theater_id" id="theater_id" required>
                 {% for theater in theaters %}
                     <option value="{{ theater.theater_id }}">{{ theater.name }}</option>
                 {% endfor %}
-            </select><br>
-            <br>
-            <label for="show_time">Show Time (YYYY-MM-DD HH:MM:SS):</label><br>
-            <input type="text" id="show_time" name="show_time" placeholder="2025-05-19 19:30:00" required><br>
-            <br>
+            </select>
+
+            <label for="show_time">Show Time (YYYY-MM-DD HH:MM:SS):</label>
+            <input type="text" id="show_time" name="show_time" placeholder="2025-05-19 19:30:00" required>
 
             <button type="submit">Add Show</button>
         </form>
+
+        <br>
+        <a href="{{ url_for('home') }}">Back to Home</a>
     </div>
-    <br>
-    <br>
-    
-    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
+</html>

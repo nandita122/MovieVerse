@@ -1,5 +1,4 @@
-import mysql.connector
-
+import  mysql.connector
 def get_connection():
     try:
         conn = mysql.connector.connect(
@@ -8,8 +7,8 @@ def get_connection():
             password="Nandita@1805",
             database="movie"
         )
-        print("Connection successful!")
+        # print("Connection successful!")
         return conn
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
+        # print(f"Error: {err}")
         return None
